@@ -7,10 +7,10 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true
     },
     password: {
         type: String,
+        select: false
     },
     timestamp: {
         type: Date,
@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
     resetPassword: {
         type: String,
         default: null,
+        select: false
     },
     state: {
         type: Boolean,

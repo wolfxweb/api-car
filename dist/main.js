@@ -6,7 +6,7 @@ const server = new configServer_1.configServer();
 server.bootstrap([
     usersRouter_1.usersRouter
 ]).then((server) => {
-    console.log('Api esta rodadno no endereço: ', server.application.address());
+    console.log('Api esta rodadno no endereço: ', server.application.url);
 }).catch(e => {
     console.log('Falha iniciar api ', e);
     process.exit(1);
