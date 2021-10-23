@@ -1,8 +1,7 @@
 # dependencies
 **node_modules
 /node_modules
-.txt
-/.txt
+/infoDev.txt
 
 # IDE - VSCode
 .vscode/*

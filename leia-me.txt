@@ -1,8 +1,0 @@
- Comando para iniciar o projeto
-
-1° Rodar o typestript => tsc -w
-
-2° Rodar nodemon => nodemon  dist/main.js
-Iniciar mongodb -> sudo systemctl start mongod
-Status mongodb -> sudo systemctl status mongod
-stop mongodb  -> sudo service mongod stop
