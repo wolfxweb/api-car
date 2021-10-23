@@ -49,9 +49,16 @@ class UsersRouter extends route_1.Router {
         application.put(`${URL}:id`, (req, resp, next) => {
             const options = { overwrite: true };
             usersModel_1.User.updateOne({ _id: req.params.id }, { $set: req.body }).then(user => {
-                usersModel_1.User.findById(req.params.id).exec().then((user) => {
+                usersModel_1.User.findById(req.params.id).exec()
+                    .then((user) => {
                     resp.json({
                         messagen: user
+                    });
+                    return next();
+                })
+                    .catch(function (error) {
+                    resp.json({
+                        messagen: "Failed to update"
                     });
                     return next();
                 });

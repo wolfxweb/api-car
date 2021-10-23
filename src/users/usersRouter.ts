@@ -58,16 +58,23 @@ class UsersRouter extends Router {
 
         application.put(`${URL}:id`, (req: restify.Request, resp: restify.Response, next: restify.Next) => {
             const options = { overwrite: true }
-           User.updateOne({ _id:req.params.id},{$set: req.body}).then(user=>{
-               User.findById(req.params.id).exec().then((user)=>{
-               
-                resp.json({
-                    messagen: user
-                })
-                return next()
-               })
-             
+            User.updateOne({ _id: req.params.id }, { $set: req.body }).then(user => {
+                User.findById(req.params.id).exec()
+                    .then((user) => {
+                        resp.json({
+                            messagen: user
+                        })
+                        return next()
+                    })
+                    .catch(function (error) {
+                        resp.json({
+                            messagen: "Failed to update"
+                        })
+                        return next()
+                    });
+
             })
+
         })
     }
 
