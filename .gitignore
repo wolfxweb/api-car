@@ -2,6 +2,7 @@
 **node_modules
 /node_modules
 /infoDev.txt
+/dist
 
 # IDE - VSCode
 .vscode/*
