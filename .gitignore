@@ -1,3 +1,5 @@
-
-node_modules
-leima-me.txt
+# dependencies
+**node_modules
+/node_modules
+.txt
+/.txt
