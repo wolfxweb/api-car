@@ -26,12 +26,16 @@ export class configServer {
         return new Promise((resolve, reject) => {
             try {
 
-          
-
+                const headers =  'Accept, Accept-Version, Content-Type, Api-Version, Origin, X-Requested-With, '
+                                + 'Authorization, Withcredentials, X-Requested-With, X-Forwarded-For, X-Real-Ip, '
+                                + 'X-Customheader, User-Agent, Keep-Alive, Host, Accept, Connection, Upgrade, '
+                                + 'Content-Type, If-Modified-Since, Cache-Control';
                 const cors = corsMiddleware({
                     preflightMaxAge:10,
                     origins: ['*'],
-                    allowHeaders: ['authorization'],
+                    allowHeaders: [
+                      headers
+                    ],
                     exposeHeaders: ['x-custom-header']
                 });
 
