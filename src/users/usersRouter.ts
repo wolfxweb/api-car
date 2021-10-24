@@ -15,7 +15,7 @@ class UsersRouter extends Router {
 
             User.find()
                 .then((users => {
-                    var res = "sucess /user/list "+users
+                    var res = "sucess /user/list " + users
                     resp.json({res})
                     return next()
                 }))
