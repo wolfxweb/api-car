@@ -8,7 +8,7 @@ module.exports = {
   watch: true,
   merge_logs: true,
   env: {
-    SERVER_PORT:3000,
+    SERVER_PORT:5000,
     DB_URL:'mongodb://localhost:27017/api-car',
     NODE_ENV:"production"
    
