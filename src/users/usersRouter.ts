@@ -18,10 +18,10 @@ class UsersRouter extends Router {
                     resp.json(users)
                     return next()
                 }))
-                .catch(() => {
-                    resp.status(404)
+                .catch((e) => {
+                   
                     resp.json({
-                        messagen: "File not found!"
+                        messagen:e
                     })
                     return next()
                 })
