@@ -15,13 +15,15 @@ class UsersRouter extends Router {
 
             User.find()
                 .then((users => {
-                    resp.json(users)
+                    var res = "sucess /user/list "+users
+                    resp.json({res})
                     return next()
                 }))
                 .catch((e) => {
                    
+                    var res = "error /user/list "+e
                     resp.json({
-                        messagen:e
+                        messagen:res
                     })
                     return next()
                 })
