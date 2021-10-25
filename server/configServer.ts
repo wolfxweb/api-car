@@ -26,27 +26,23 @@ export class configServer {
         return new Promise((resolve, reject) => {
             try {
 
-                const headers =  'Accept, Accept-Version, Content-Type, Api-Version, Origin, X-Requested-With, '
-                                + 'Authorization, Withcredentials, X-Requested-With, X-Forwarded-For, X-Real-Ip, '
-                                + 'X-Customheader, User-Agent, Keep-Alive, Host, Accept, Connection, Upgrade, '
-                                + 'Content-Type, If-Modified-Since, Cache-Control';
-                const cors = corsMiddleware({
-                    preflightMaxAge:10,
+                var cors = corsMiddleware({
+                    preflightMaxAge: 5,
                     origins: ['*'],
-                    allowHeaders: [
-                      headers
-                    ],
+                    allowHeaders: ['authorization'],
                     exposeHeaders: ['x-custom-header']
-                });
+                  });
 
                 this.application = restify.createServer({
                     name: environment.name_api.name,
                     version: environment.version_api.version
                 })
+            
               
 
-                  this.application.pre(cors.preflight);
-                  this.application.use(cors.actual);
+                this.application.pre(cors.preflight);
+                this.application.use(cors.actual);
+                
                 /*
 
                 const corsOptions: corsMiddleware.Options = {
