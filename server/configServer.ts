@@ -5,6 +5,9 @@ import * as corsMiddleware from 'restify-cors-middleware'
 import { environment } from "../common/environment"
 
 import { Router } from "../common/route"
+import {errorHandler} from "./errorHandler"
+
+import {tokenParser} from "../security/tokeParser"
 
 export class configServer {
 
@@ -43,30 +46,15 @@ export class configServer {
                 this.application.pre(cors.preflight);
                 this.application.use(cors.actual);
                 
-                /*
-
-                const corsOptions: corsMiddleware.Options = {
-                    preflightMaxAge:10,
-                    origins: ['*'],
-                    allowHeaders: ['authorization'],
-                    exposeHeaders: ['x-custom-header']
-                }
-                const cors: corsMiddleware.CorsMiddleware = corsMiddleware(corsOptions)
-
-                this.application.pre(cors.preflight)
-
-                this.application.use(cors.actual)
-
-
-
-                */
                 this.application.use(restify.plugins.queryParser())
                 this.application.use(restify.plugins.bodyParser())
+                this.application.use(tokenParser)
 
 
                 for (let router of routes) { router.applyRoutes(this.application) }
 
                 this.application.listen(environment.server.port, () => { resolve(this.application) })
+                this.application.on('restifyError', errorHandler)
 
             } catch (error) {
                 reject(error)
